@@ -1,0 +1,22 @@
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -- $0 "$@"
+|#
+(progn ;;init forms
+  (ros:ensure-asdf)
+  (asdf:load-system "com.djhaskin.calc"))
+
+(defpackage :ros.script.calc.3941919262
+  (:use :cl)
+  (:import-from #:com.djhaskin.calc)
+  (:local-nicknames
+    (#:calc #:com.djhaskin.calc)))
+
+(in-package :ros.script.calc.3941919262)
+
+(defun main (&rest argv)
+  (declare (ignorable argv))
+  (calc:main argv))
+
+;;; vim: set ft=lisp lisp:
